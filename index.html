@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Rock Paper Scissors</title>
+  </head>
+
+  <body>
+
+    <script>
+      function computerPlay() {
+        let move = Math.floor(Math.random() * 3);
+        if (move == 0) {
+          return "Rock";
+        } else if (move == 1){
+          return "Paper";
+        } else {
+          return "Scissors"
+        }
+      }
+      function playRound(playerSelection, computerSelection) {
+        playerSelection = capitalize(playerSelection);
+        computerSelection = capitalize(computerSelection);
+        if (playerSelection == "Rock" && computerSelection == "Rock") {
+          return "Tie!";
+        } else if (playerSelection == "Rock" && computerSelection ==
+            "Paper") {
+          return "You Lose!";
+        } else if (playerSelection == "Rock" && computerSelection ==
+            "Scissors") {
+          return "You Win!";
+        } else if (playerSelection == "Paper" && computerSelection ==
+          "Rock") {
+          return "You Win!";
+        } else if (playerSelection == "Paper" && computerSelection ==
+              "Paper") {
+          return "Tie!";
+        } else if (playerSelection == "Paper" && computerSelection ==
+            "Scissors") {
+          return "You Lose!";
+        } else if (playerSelection == "Scissors" && computerSelection ==
+            "Rock") {
+          return "You Lose!";
+        } else if (playerSelection == "Scissors" && computerSelection ==
+            "Paper") {
+          return "You Win!";
+        } else if (playerSelection == "Scissors" && computerSelection ==
+            "Scissors") {
+          return "Tie!";
+        } else {
+          return "Something messed up"
+        }
+      }
+      function capitalize(string) {
+        let firstLetter = string.slice(0, 1);
+        let woFirstLetter = string.slice(1, );
+        return firstLetter.toUpperCase() + woFirstLetter.toLowerCase();
+      }
+      function game() {
+        let roundCounter;
+        let winCounter = 0;
+        let loseCounter = 0;
+        let roundResult;
+        for (roundCounter = 1; roundCounter <= 5; ++roundCounter) {
+          let playerSelection =
+            prompt("Enter your selection; Rock, Paper or Scissors.");
+          let computerSelection = computerPlay();
+          roundResult = playRound(playerSelection, computerSelection);
+          if (roundResult == "You Win!") {
+            ++winCounter;
+          } else if (roundResult == "You Lose!") {
+            ++loseCounter;
+          }
+          console.log("Round: " + roundCounter + "  " + "You chose: "
+            + playerSelection + "  " + "Your opponent chose: "
+            + computerSelection + "  " + roundResult + "  Wins: "
+            + winCounter + "  Losses: " + loseCounter);
+        }
+        if (winCounter > loseCounter) {
+          console.log("You Win the game!");
+        } else if (winCounter < loseCounter) {
+          console.log("You Lose the game!");
+        } else {
+          console.log("You Tied the game!");
+        }
+      }
+
+      </script>
+
+  </body>
+</html>
